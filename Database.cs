@@ -29,7 +29,7 @@ namespace Movie_System
             return dt;
         }
 
-        public DataTable FillBook_Data()
+        public DataTable FillMovies_Data()
         {
             DataTable dt = new DataTable();
             QueryString = "select * From Movies";
@@ -41,7 +41,7 @@ namespace Movie_System
             }
             return dt;
         }
-        public DataTable FillRent_Data()
+        public DataTable FillRental_Data()
         {
             DataTable dt = new DataTable();
             QueryString = "select * From RentedMovies";

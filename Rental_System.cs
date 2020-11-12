@@ -10,8 +10,8 @@ namespace Movie_System
         {
             InitializeComponent();
             Customer_Load();
-            Book_Load();
-            Rent_Load();
+            Movies_Load();
+            Rental_Load();
         }
 
 
@@ -29,12 +29,12 @@ namespace Movie_System
             }
         }
 
-        public void Book_Load()
+        public void Movies_Load()
         {
             DGV_Movie.DataSource = null;
             try
             {
-                DGV_Movie.DataSource = Obj_Data.FillBook_Data();
+                DGV_Movie.DataSource = Obj_Data.FillMovies_Data();
                 DGV_Movie.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -43,12 +43,12 @@ namespace Movie_System
             }
         }
 
-        public void Rent_Load()
+        public void Rental_Load()
         {
             DGV_Rental.DataSource = null;
             try
             {
-                DGV_Rental.DataSource = Obj_Data.FillRent_Data();
+                DGV_Rental.DataSource = Obj_Data.FillRental_Data();
                 DGV_Rental.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
