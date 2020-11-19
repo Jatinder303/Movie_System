@@ -56,5 +56,23 @@ namespace Movie_System
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            if (txt_FName.Text != "" && txt_LName.Text != "" && txt_Address.Text != "" && txt_Mobile.Text != "")
+            {
+                string message = Obj_Data.CustomerInsert(txt_FName.Text, txt_LName.Text, txt_Mobile.Text, txt_Address.Text);
+                MessageBox.Show(message);
+                txt_FName.Text = "";
+                txt_LName.Text = "";
+                txt_Mobile.Text = "";
+                txt_Address.Text = "";
+                Customer_Load();
+            }
+            else
+            {
+                MessageBox.Show("Please fill all the fileds then press Add button");
+            }
+        }
     }
 }
