@@ -11,6 +11,7 @@ namespace Movie_System
         private SqlDataReader Data_Reader;
         private SqlDataAdapter da = new SqlDataAdapter();
         string QueryString;
+        public int CustomerID;
         public Database()
         {
             string ConnString = @"Data Source=DPKASTG-05\SQLEXPRESS;Initial Catalog=Video_Rental_System;Integrated Security=True";

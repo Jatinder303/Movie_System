@@ -48,6 +48,17 @@ namespace Movie_System
             this.btn_Add = new System.Windows.Forms.Button();
             this.btn_Update = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
+            this.pnl_Rental = new System.Windows.Forms.Panel();
+            this.lbl_DateReturn = new System.Windows.Forms.Label();
+            this.lbl_DateIssue = new System.Windows.Forms.Label();
+            this.lbl_MovieName = new System.Windows.Forms.Label();
+            this.lbl_CustName = new System.Windows.Forms.Label();
+            this.txt_CustName = new System.Windows.Forms.TextBox();
+            this.txt_MovieName = new System.Windows.Forms.TextBox();
+            this.date_Picker_IssueDT = new System.Windows.Forms.DateTimePicker();
+            this.date_Picker_ReturnDt = new System.Windows.Forms.DateTimePicker();
+            this.btn_Return = new System.Windows.Forms.Button();
+            this.btn_Issue = new System.Windows.Forms.Button();
             this.Tab_Cont_Data.SuspendLayout();
             this.tab_Customer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Customer)).BeginInit();
@@ -56,6 +67,7 @@ namespace Movie_System
             this.tab_Rental.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Rental)).BeginInit();
             this.Pnl_Customer.SuspendLayout();
+            this.pnl_Rental.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tab_Cont_Data
@@ -87,6 +99,8 @@ namespace Movie_System
             this.DGV_Customer.Name = "DGV_Customer";
             this.DGV_Customer.Size = new System.Drawing.Size(524, 253);
             this.DGV_Customer.TabIndex = 0;
+            this.DGV_Customer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Customer_CellContentClick);
+            this.DGV_Customer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Customer_CellContentClick);
             // 
             // tab_Movie
             // 
@@ -246,12 +260,119 @@ namespace Movie_System
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = false;
             // 
+            // pnl_Rental
+            // 
+            this.pnl_Rental.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pnl_Rental.Controls.Add(this.btn_Return);
+            this.pnl_Rental.Controls.Add(this.btn_Issue);
+            this.pnl_Rental.Controls.Add(this.date_Picker_ReturnDt);
+            this.pnl_Rental.Controls.Add(this.date_Picker_IssueDT);
+            this.pnl_Rental.Controls.Add(this.txt_MovieName);
+            this.pnl_Rental.Controls.Add(this.txt_CustName);
+            this.pnl_Rental.Controls.Add(this.lbl_DateReturn);
+            this.pnl_Rental.Controls.Add(this.lbl_CustName);
+            this.pnl_Rental.Controls.Add(this.lbl_DateIssue);
+            this.pnl_Rental.Controls.Add(this.lbl_MovieName);
+            this.pnl_Rental.Location = new System.Drawing.Point(413, 309);
+            this.pnl_Rental.Name = "pnl_Rental";
+            this.pnl_Rental.Size = new System.Drawing.Size(387, 136);
+            this.pnl_Rental.TabIndex = 2;
+            // 
+            // lbl_DateReturn
+            // 
+            this.lbl_DateReturn.AutoSize = true;
+            this.lbl_DateReturn.Location = new System.Drawing.Point(14, 105);
+            this.lbl_DateReturn.Name = "lbl_DateReturn";
+            this.lbl_DateReturn.Size = new System.Drawing.Size(65, 13);
+            this.lbl_DateReturn.TabIndex = 14;
+            this.lbl_DateReturn.Text = "Date Return";
+            // 
+            // lbl_DateIssue
+            // 
+            this.lbl_DateIssue.AutoSize = true;
+            this.lbl_DateIssue.Location = new System.Drawing.Point(13, 73);
+            this.lbl_DateIssue.Name = "lbl_DateIssue";
+            this.lbl_DateIssue.Size = new System.Drawing.Size(58, 13);
+            this.lbl_DateIssue.TabIndex = 13;
+            this.lbl_DateIssue.Text = "Issue Date";
+            // 
+            // lbl_MovieName
+            // 
+            this.lbl_MovieName.AutoSize = true;
+            this.lbl_MovieName.Location = new System.Drawing.Point(14, 40);
+            this.lbl_MovieName.Name = "lbl_MovieName";
+            this.lbl_MovieName.Size = new System.Drawing.Size(67, 13);
+            this.lbl_MovieName.TabIndex = 12;
+            this.lbl_MovieName.Text = "Movie Name";
+            // 
+            // lbl_CustName
+            // 
+            this.lbl_CustName.AutoSize = true;
+            this.lbl_CustName.Location = new System.Drawing.Point(14, 10);
+            this.lbl_CustName.Name = "lbl_CustName";
+            this.lbl_CustName.Size = new System.Drawing.Size(82, 13);
+            this.lbl_CustName.TabIndex = 11;
+            this.lbl_CustName.Text = "Customer Name";
+            // 
+            // txt_CustName
+            // 
+            this.txt_CustName.Location = new System.Drawing.Point(107, 7);
+            this.txt_CustName.Name = "txt_CustName";
+            this.txt_CustName.Size = new System.Drawing.Size(100, 20);
+            this.txt_CustName.TabIndex = 15;
+            // 
+            // txt_MovieName
+            // 
+            this.txt_MovieName.Location = new System.Drawing.Point(107, 40);
+            this.txt_MovieName.Name = "txt_MovieName";
+            this.txt_MovieName.Size = new System.Drawing.Size(100, 20);
+            this.txt_MovieName.TabIndex = 16;
+            // 
+            // date_Picker_IssueDT
+            // 
+            this.date_Picker_IssueDT.Location = new System.Drawing.Point(107, 73);
+            this.date_Picker_IssueDT.Name = "date_Picker_IssueDT";
+            this.date_Picker_IssueDT.Size = new System.Drawing.Size(181, 20);
+            this.date_Picker_IssueDT.TabIndex = 17;
+            // 
+            // date_Picker_ReturnDt
+            // 
+            this.date_Picker_ReturnDt.Location = new System.Drawing.Point(107, 105);
+            this.date_Picker_ReturnDt.Name = "date_Picker_ReturnDt";
+            this.date_Picker_ReturnDt.Size = new System.Drawing.Size(181, 20);
+            this.date_Picker_ReturnDt.TabIndex = 18;
+            // 
+            // btn_Return
+            // 
+            this.btn_Return.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Return.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Return.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Return.Location = new System.Drawing.Point(300, 71);
+            this.btn_Return.Name = "btn_Return";
+            this.btn_Return.Size = new System.Drawing.Size(75, 36);
+            this.btn_Return.TabIndex = 20;
+            this.btn_Return.Text = "Return";
+            this.btn_Return.UseVisualStyleBackColor = false;
+            // 
+            // btn_Issue
+            // 
+            this.btn_Issue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Issue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Issue.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Issue.Location = new System.Drawing.Point(300, 31);
+            this.btn_Issue.Name = "btn_Issue";
+            this.btn_Issue.Size = new System.Drawing.Size(75, 36);
+            this.btn_Issue.TabIndex = 19;
+            this.btn_Issue.Text = "Issue";
+            this.btn_Issue.UseVisualStyleBackColor = false;
+            // 
             // Rental_System
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnl_Rental);
             this.Controls.Add(this.Pnl_Customer);
             this.Controls.Add(this.Tab_Cont_Data);
             this.Name = "Rental_System";
@@ -265,6 +386,8 @@ namespace Movie_System
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Rental)).EndInit();
             this.Pnl_Customer.ResumeLayout(false);
             this.Pnl_Customer.PerformLayout();
+            this.pnl_Rental.ResumeLayout(false);
+            this.pnl_Rental.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,6 +413,17 @@ namespace Movie_System
         private System.Windows.Forms.Label lbl_Mobile;
         private System.Windows.Forms.Label lbl_LName;
         private System.Windows.Forms.Label llb_FName;
+        private System.Windows.Forms.Panel pnl_Rental;
+        private System.Windows.Forms.Button btn_Return;
+        private System.Windows.Forms.Button btn_Issue;
+        private System.Windows.Forms.DateTimePicker date_Picker_ReturnDt;
+        private System.Windows.Forms.DateTimePicker date_Picker_IssueDT;
+        private System.Windows.Forms.TextBox txt_MovieName;
+        private System.Windows.Forms.TextBox txt_CustName;
+        private System.Windows.Forms.Label lbl_DateReturn;
+        private System.Windows.Forms.Label lbl_CustName;
+        private System.Windows.Forms.Label lbl_DateIssue;
+        private System.Windows.Forms.Label lbl_MovieName;
     }
 }
 

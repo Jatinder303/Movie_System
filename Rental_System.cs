@@ -74,5 +74,24 @@ namespace Movie_System
                 MessageBox.Show("Please fill all the fileds then press Add button");
             }
         }
+
+        private void DGV_Customer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string newvalue = DGV_Customer.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                this.Text = "Row : " + e.RowIndex.ToString() + " Col : " + e.ColumnIndex.ToString() + " Value = " + newvalue;
+                Obj_Data.CustomerID = Convert.ToInt32(DGV_Customer.Rows[e.RowIndex].Cells[0].Value);
+                txt_FName.Text = DGV_Customer.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txt_LName.Text = DGV_Customer.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txt_Mobile.Text = DGV_Customer.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txt_Address.Text = DGV_Customer.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txt_CustName.Text = DGV_Customer.Rows[e.RowIndex].Cells[1].Value.ToString() + " " + DGV_Customer.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something is wrong", ex.Message);
+            }
+        }
     }
 }
