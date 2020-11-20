@@ -89,5 +89,69 @@ namespace Movie_System
             }
         }
 
+        public string CustomerUpdate(string FName, string LName, string Mobile, string Address)
+        {
+            try
+            {
+                Cmd.Parameters.Clear();
+                Cmd.Connection = Obj_Conn;
+                QueryString = "update Customer set FirstName = @FirstName,LastName = @LastName,Address = @Address, Phone = @Mobile where CustID =@CustID";
+                Cmd.Parameters.AddWithValue("@FirstName", FName);
+                Cmd.Parameters.AddWithValue("@LastName", LName);
+                Cmd.Parameters.AddWithValue("@Address", Address);
+                Cmd.Parameters.AddWithValue("@Mobile", Mobile);
+                Cmd.Parameters.AddWithValue("@CustID", CustomerID);
+                Cmd.CommandText = QueryString;
+                //connection opened
+                Obj_Conn.Open();
+                // Executed query
+                Cmd.ExecuteNonQuery();
+                return "Customer Data Updated Successfully";
+            }
+            catch (Exception ex)
+            {
+                // show error Message
+                return ex.Message;
+            }
+            finally
+            {
+                // close connection
+                if (Obj_Conn != null)
+                {
+                    Obj_Conn.Close();
+                }
+            }
+        }
+
+        public string CustomerDelete()
+        {
+            try
+            {
+                Cmd.Parameters.Clear();
+                Cmd.Connection = Obj_Conn;
+                QueryString = "Delete from Customer where CustID =@CustID";
+                Cmd.Parameters.AddWithValue("@CustID", CustomerID);
+                Cmd.CommandText = QueryString;
+                //connection opened
+                Obj_Conn.Open();
+                // Executed query
+                Cmd.ExecuteNonQuery();
+                return "Customer Data Deleted Successfully";
+            }
+            catch (Exception ex)
+            {
+                // show error Message
+                return ex.Message;
+            }
+            finally
+            {
+                // close connection
+                if (Obj_Conn != null)
+                {
+                    Obj_Conn.Close();
+                }
+            }
+        }
+
     }
 }

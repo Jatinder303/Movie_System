@@ -59,6 +59,7 @@ namespace Movie_System
             this.date_Picker_ReturnDt = new System.Windows.Forms.DateTimePicker();
             this.btn_Return = new System.Windows.Forms.Button();
             this.btn_Issue = new System.Windows.Forms.Button();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.Tab_Cont_Data.SuspendLayout();
             this.tab_Customer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Customer)).BeginInit();
@@ -247,6 +248,7 @@ namespace Movie_System
             this.btn_Update.TabIndex = 9;
             this.btn_Update.Text = "Update";
             this.btn_Update.UseVisualStyleBackColor = false;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // btn_Delete
             // 
@@ -259,6 +261,7 @@ namespace Movie_System
             this.btn_Delete.TabIndex = 10;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = false;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // pnl_Rental
             // 
@@ -424,6 +427,7 @@ namespace Movie_System
         private System.Windows.Forms.Label lbl_CustName;
         private System.Windows.Forms.Label lbl_DateIssue;
         private System.Windows.Forms.Label lbl_MovieName;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
     }
 }
 

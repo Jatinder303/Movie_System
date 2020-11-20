@@ -93,5 +93,34 @@ namespace Movie_System
                 MessageBox.Show("Something is wrong", ex.Message);
             }
         }
+
+        private void btn_Update_Click(object sender, EventArgs e)
+        {
+            if (txt_FName.Text != "" && txt_LName.Text != "" && txt_Address.Text != "" && txt_Mobile.Text != "")
+            {
+                string message = Obj_Data.CustomerUpdate(txt_FName.Text, txt_LName.Text, txt_Mobile.Text, txt_Address.Text);
+                MessageBox.Show(message);
+                txt_FName.Text = "";
+                txt_LName.Text = "";
+                txt_Mobile.Text = "";
+                txt_Address.Text = "";
+                Customer_Load();
+            }
+            else
+            {
+                MessageBox.Show("Please fill all the fileds then press Add button");
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            string message = Obj_Data.CustomerDelete();
+            MessageBox.Show(message);
+            txt_FName.Text = "";
+            txt_LName.Text = "";
+            txt_Mobile.Text = "";
+            txt_Address.Text = "";
+            Customer_Load();
+        }
     }
 }
