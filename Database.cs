@@ -142,9 +142,14 @@ namespace Movie_System
             {
                 Cmd.Parameters.Clear();
                 Cmd.Connection = Obj_Conn;
-                QueryString = "Delete from Customer where CustID =@CustID";
+
+                Cmd.CommandText = "Customer_Delete";
+                Cmd.CommandType = CommandType.StoredProcedure;
+
+                //QueryString = "Delete from Customer where CustID =@CustID";
+                //Cmd.CommandText = QueryString;
+
                 Cmd.Parameters.AddWithValue("@CustID", CustomerID);
-                Cmd.CommandText = QueryString;
                 //connection opened
                 Obj_Conn.Open();
                 // Executed query
