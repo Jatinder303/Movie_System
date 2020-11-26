@@ -46,7 +46,20 @@ namespace Movie_System
         public DataTable FillRental_Data()
         {
             DataTable dt = new DataTable();
-            QueryString = "select * From RentedMovies";
+            QueryString = "select * From Rented_Movies_View";
+            using (da = new SqlDataAdapter(QueryString, Obj_Conn))
+            {
+                Obj_Conn.Open();
+                da.Fill(dt);
+                Obj_Conn.Close();
+            }
+            return dt;
+        }
+
+        public DataTable FillRentalOut_Data()
+        {
+            DataTable dt = new DataTable();
+            QueryString = "select * From RentedOut";
             using (da = new SqlDataAdapter(QueryString, Obj_Conn))
             {
                 Obj_Conn.Open();

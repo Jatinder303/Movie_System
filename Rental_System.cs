@@ -122,5 +122,24 @@ namespace Movie_System
             txt_Address.Text = "";
             Customer_Load();
         }
+
+        private void btn_RentOut_Click(object sender, EventArgs e)
+        {
+            DGV_Rental.DataSource = null;
+            try
+            {
+                DGV_Rental.DataSource = Obj_Data.FillRentalOut_Data();
+                DGV_Rental.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_AllRented_Click(object sender, EventArgs e)
+        {
+            Rental_Load();
+        }
     }
 }
